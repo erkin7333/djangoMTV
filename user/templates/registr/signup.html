@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3 mt-4">
+            <div class="cart-header">
+                <h1>Ro'yxatdan o'tish</h1>
+            </div>
+            <div class="cart-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <button type="submit" class="btn btn-outline-primary">Saqlash</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

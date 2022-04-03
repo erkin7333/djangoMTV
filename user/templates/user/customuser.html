@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-lg-6 offset-lg-3">
+                <ul class="nav border-bottom">
+                    <li class="nav-item">
+                        <h4 class="nav-link active">Yetakchilar</h4>
+                    </li>
+                    {% if request.user.is_organisor %}
+                        <li class="nav-item ml-auto mt-1">
+                            <a class="nav-link" href="{% url 'user:user_create' %}">Yangi foydalanuvchi qo'shish</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#id</th>
+                        <th scope="col">Ism</th>
+                        <th scope="col">Familya</th>
+                        <th scope="col">Yosh</th>
+                        <th scope="col">Tafsilot</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for u_list in user_list %}
+                        <tr>
+                            <th scope="row">{{ u_list.id }}</th>
+                            <td>{{ u_list.first_name }}</td>
+                            <td>{{ u_list.last_name }}</td>
+                            <td>{{ u_list.age }}</td>
+                            <td><a href="{% url 'user:user_detail' u_list.pk %}">ko'rish</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

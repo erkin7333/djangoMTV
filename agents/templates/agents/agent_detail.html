@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#id</th>
+                                <th scope="col">Ismi</th>
+                                <th scope="col">Familyasi</th>
+                                <th scope="col">Agent</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">{{ agent.pk }}</th>
+                                <td>{{ agent.user.username}}</td>
+                                <td>{{ agent.user.last_name }}</td>
+                                <td>{{ agent }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a href="{% url 'agents:agents' %}" class="btn btn-outline-primary">Orqaga</a>
+                        <a href="{% url 'agents:agents-update' agent.pk %}" class="btn btn-outline-primary">Yangilash</a>
+                        <a href="{% url 'agents:agents-delete' agent.pk %}" class="btn btn-outline-primary">O'chirish</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

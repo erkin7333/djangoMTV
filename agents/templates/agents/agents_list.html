@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+
+
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-lg-6 offset-lg-3">
+                <ul class="nav border-bottom">
+                    <li class="nav-item">
+                        <h4 class="nav-link active">Agentlar</h4>
+                    </li>
+                    <li class="nav-item ml-auto mt-1">
+                        <a class="nav-link" href="{% url 'agents:agents-create' %}">Yangi agentlar qo'shish</a>
+                    </li>
+                </ul>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#id</th>
+                        <th scope="col">Agent nomi</th>
+                        <th scope="col">Tashkilot</th>
+                        <th scope="col">Tafsilot</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for agent in object_list %}
+                        <tr>
+                            <th scope="row">{{ agent.id }}</th>
+                            <td>{{ agent.user.username }}</td>
+                            <td>{{ agent.organisation }}</td>
+                            <td><a href="{% url 'agents:agents-detail' agent.pk %}">ko'rish</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
